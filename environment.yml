@@ -11,6 +11,7 @@ dependencies:
   - cairo=1.14.12=h8948797_3
   - certifi=2019.3.9=py37_0
   - cffi=1.12.3=py37h2e261b9_0
+  - click=7.0=py37_0
   - cudatoolkit=10.0.130=0
   - cycler=0.10.0=py37_0
   - dbus=1.13.6=h746ee38_0

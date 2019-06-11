@@ -8,6 +8,9 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import os
 
+__all__ = ['DogBreedDataset']
+
+
 # fixme: NOT TESTED
 class DogBreedDataset(Dataset):
     def __init__(self,
@@ -72,11 +75,12 @@ class DogBreedDataset(Dataset):
             cv2.imread(os.path.join(self.data_dir, self._data.iloc[item, 'img'])),
             cv2.COLOR_BGR2RGB)
 
-        if not self.is_inference:
-            label = self._data.iloc[item, 'breed']
-
         if self.transformation is not None:
             augmented = self.transformation(image=image)
             image = augmented['image']
 
-        return image, label
+        if not self.is_inference:
+            label = self._data.iloc[item, 'breed']
+            return image, label
+        else:
+            return image
